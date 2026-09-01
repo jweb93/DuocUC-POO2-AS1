@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 /**
  * Representa un pedido que debe ser entregado a una dirección
  */
@@ -8,11 +10,16 @@ public abstract class  Pedido {
     private int idPedido;
     private Direccion direccionEntrega;
     private double distanciaKM;
+    private ArrayList<String> historial;
+    private String estado; // En preparación, En despacho, Entregado, Cancelado
 
-    public Pedido(int idPedido, Direccion direccionEntrega, double distanciaKM) {
+    public Pedido(int idPedido, Direccion direccionEntrega, double distanciaKM){
         this.idPedido = idPedido;
         this.direccionEntrega = direccionEntrega;
         this.distanciaKM = distanciaKM;
+        this.historial = new ArrayList<>();
+        this.estado = "Por reservar";
+        agregaHistorial(this.estado);
     }
 
 // Getter and Setters
@@ -42,7 +49,24 @@ public abstract class  Pedido {
         this.distanciaKM = distanciaKM;
     }
 
-    // Método base
+    public ArrayList<String> getHistorial() {
+        return historial;
+    }
+
+    public void setHistorial(ArrayList<String> historial) {
+        this.historial = historial;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+        agregaHistorial(estado);
+    }
+
+    // Método base implementado para mostrar resumen
     public void mostrarResumen(){
         System.out.println("Pedido N°: " + idPedido);
         System.out.println("Destino: " + direccionEntrega);
@@ -50,7 +74,23 @@ public abstract class  Pedido {
         System.out.println("Tiempo (min): " + calcularTiempoEntrega());
     }
 
-    // Método abstracto
+    // Método base implementado para asignar repartidor genérico
+    public void asignarRepartidor(){
+        System.out.println("Asignando un repartidor para su pedido");
+    }
+
+    // Método base implementado para asignar repartidor específico
+    public void asignarRepartidor(String nombre){
+        System.out.println("Asignando a " + nombre + " para entregar su pedido");
+    }
+
+    // Método abstracto que deberá ser implementado por las subclases.
     public abstract int calcularTiempoEntrega();
+
+    // Método adicional para agregar evento al historial
+    public void agregaHistorial(String evento){
+        this.historial.add(evento);
+    }
+
 }
 

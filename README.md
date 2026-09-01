@@ -1,5 +1,5 @@
 ![Duoc UC](https://www.duoc.cl/wp-content/uploads/2022/09/logo-0.png)
-# 🧠 Actividad Formativa 2 – Desarrollo Orientado a Objetos II
+# 🧠 Actividad Sumativa 1 – Desarrollo Orientado a Objetos II
 
 ## 💻 Proyecto: SpeedFast
 ## 👤 Autor del proyecto
@@ -11,18 +11,28 @@
 ---
 
 ## 📘 Descripción general del sistema
-Este proyecto da respuesta a la Actividad Formativa 2 de la asignatura 
-*Desarrollo Orientado a Objetos II*. En la propuesta se desarrolla una 
-clase abstracta Pedido y 3 subclases PedidoComida, PedidoExpress,
- PedidoEncomienda que implementan el método CalcularTiempoEntrega() 
-y sobreescriben el método base mostrarResumen(). Adicionalmente se implementa
-una clase Main que crea instancias de cada subclase y genera resultado en consola a partir
-de los métodos sobreescritos de cada objeto creado.
+Este proyecto da respuesta a la Actividad Sumativa 1 de la asignatura 
+*Desarrollo Orientado a Objetos II*. 
+
+En la propuesta se desarrolla la superclase abstracta Pedido con atributos base,
+método abstracto calcularTiempoEntrega() y métodos implementados. A partir de esta base
+ se crean 3 subclases PedidoComida, PedidoExpress, PedidoEncomienda que heredan de Pedido y además
+implementan 5 interfaces que permiten registrar el cambio de estado de un pedido en el flujo de 
+entrega:
+1. Por reservar <- reservar(), cancelar()
+2. En preparación <- despachar()
+2. En despacho <- entregar()
+3. Entregado
+4. Cancelado.
+
+Consideraciones:
+- Los pedidos sólo se pueden cancelar mientras están Por reservar. 
+- Sólo se puede asignar un/a repartidor/a cuando los pedidos están en estado En preparación.
 
 El sistema creado se organiza en paquetes, aplica principios de herencia 
 (Pedido -> PedidoComida, PedidoExpress, PedidoEncomienda),
 composición (clase Dirección), encapsulamiento (atributos privados y 
-métodos getter/setter), polimorfismo (sobreescritura de métodos)
+métodos getter/setter), polimorfismo (sobreescritura de métodos), desacoplamiento (interfaces) 
 y mantiene documentación de código usando Javadocs.
 
 ---
@@ -33,7 +43,12 @@ y mantiene documentación de código usando Javadocs.
 docs
 └── index.html
 src
-├── data
+├── interfaces
+│   ├── Cancelable.java
+│   ├── Despachable.java
+│   ├── Entregable.java
+│   ├── Rastreable.java
+│   └── Reservable.java
 ├── model
 │   ├── Direccion.java
 │   ├── Pedido.java
@@ -53,7 +68,7 @@ src
 1. Clone el repositorio desde GitHub:
 
 ```bash
-git clone https://github.com/jweb93/DuocUC-POO2-AF2.git
+git clone https://github.com/jweb93/DuocUC-POO2-AS1.git
 ```
 
 2. Abra el proyecto en IntelliJ IDEA.
@@ -65,8 +80,8 @@ archivo `docs/index.html`
 
 ---
 
-**Repositorio GitHub:** https://github.com/jweb93/DuocUC-POO2-AF2
-**Fecha de entrega:** \[24/08/2026]
+**Repositorio GitHub:** https://github.com/jweb93/DuocUC-POO2-AS1
+**Fecha de entrega:** \[31/08/2026]
 
 ---
 
