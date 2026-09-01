@@ -63,7 +63,7 @@ src
 
 ## 🔎 Diagrama de clases
 
-![Diagrama de clases](docs/diagramaUML.svg)
+![Diagrama de clases](docs/AS1_UML.png)
 
 ## ⚙️ Instrucciones para clonar y ejecutar el proyecto
 
