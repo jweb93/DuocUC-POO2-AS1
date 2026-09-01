@@ -61,7 +61,9 @@ src
 
 ---
 
+## 🔎 Diagrama de clases
 
+![Diagrama de clases](docs/diagramaUML.svg)
 
 ## ⚙️ Instrucciones para clonar y ejecutar el proyecto
 
